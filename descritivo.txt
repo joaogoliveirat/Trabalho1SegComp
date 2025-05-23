@@ -1,0 +1,18 @@
+A Cifra de Vigenere funciona a partir de uma mensagem e de uma senha. Essa senha, repetida até ficar do tamanho da mensagem,
+é utilizada de maneira comparativa, onde comparamos cada letra da mensagem com cada letra da senha na mesma posição, e shiftamos
+a letra da mensagem N posições no alfabeto, sendo N a diferença entre a posição da letra da mensagem e a posição da letra da senha.
+Por exemplo, tendo A na primeira letra da mensagem original, e O na primeira letra da senha, nós temos 0 como a posição de A no alfa-
+beto e 14 como a posição de O no alfabeto. 0-14 tem módulo 14, então shiftamos o A 14 posições no alfabeto, o que faz o A virar O na
+cifra. Nesse código, ela foi implementada da maneira que está comentada. Nós pegamos a posição da letra da mensagem e somamos com a 
+da senha, tomando cuidado para calculá-la módulo 26 pra manter o resultado no alfabeto. A decifra segue apenas o caminho oposto, sub-
+traindo a posição do criptograma pela da senha. O ataque é feito a partir de algo chamado de Índice de Coincidência. O índice de coin-
+cidência mede a probabilidade de 2 letras aleatóriamente escolhidas num texto serem iguais. Isso tem como função ver se o texto é es-
+crito em linguagem natural ou não. A partir desse IC, nós estimamos o tamanho da chave testando todos os tamanhos até um certo máximo
+pré estabelecido, calculando a média dos ICS para cada tamanho e vendo os mais naturais. Dividimos o texto em blocos de tamanho N,
+sendo N de 1 até o máximo pré estabelecido, calcula e guarda o IC de cada bloco, e calcula e guarda a média dos ics pra cada tamanho.
+O tamanho com a maior média é a melhor estimativa. Um pequeno problema é que múltiplos tendem a ter médias muito parecidas, então
+o código ocasionalmente confunde tamanhos de chaves múltiplos. Por isso, ele te mostra todas as médias e te prompta para poder escolher
+manualmente o tamanho de chave se desejado for. Depois, ele usa frequência para descobrir a senha. Ele tenta decifrar o bloco de texto
+atual com cada letra possível, calculando a frequencia relativa do bloco e comparando essa frequencia com a frequencia esperada da-
+quele idioma(portugues ou ingles), atualizando o menor chi quadrado(usado para comparar as frequencias) e guardando a letra da chave
+que gerou esse novo chi quadrado, e adicionando essa letra à senha estimada.
