@@ -2,7 +2,7 @@
 João Gilberto de Oliveira Teixeira - 211036070
 
 # De forma a rodar o código
-Executar o comando a seguir e depois seguir as instruções do próprio código.:
+Executar o comando a seguir e depois seguir as instruções do próprio código:
 > python3 main.py
 
 
